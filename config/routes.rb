@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'course' => 'course#show'
   get 'course/setup'
+  post 'course/set_org'
   get 'course/show_roster'
   get 'course/edit_roster'
   get 'course/change_roster'
