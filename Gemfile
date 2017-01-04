@@ -23,6 +23,7 @@ gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'pg'
+gem 'octokit', '~> 4.0'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
