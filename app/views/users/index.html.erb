@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
     <h3>Users</h3>
-    <div class="col-sm-6">
+    <div class="col-sm-9">
       <table class="table">
         <thead>
           <tr>
             <th>Name</th>
             <th>GitHub Profile</th>
+            <th>Is Instructor</th>
+            <% if is_instructor? %><th></th><% end %>
             <th></th>
           </tr>
         </thead>
@@ -15,6 +17,13 @@
             <tr>
               <td><%= user.name %></td>
               <td><a href="https://github.com/<%= user.username %>"><%= user.username %></td>
+              <td><%= is_instructor? user %></td>
+              <% if is_instructor? %>
+              <td><%= button_to "Toggle Instructor",
+                                toggle_instructor_privilege_user_path(user),
+                                method: :post, class: 'btn btn-sm btn-primary',
+                                data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
               <td><%= link_to "View Profile", user %></td>
             </tr>
           <% end %>

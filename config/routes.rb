@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'course/edit_roster'
   get 'course/change_roster'
 
-  resources :users
+  resources :users do
+    member do
+      post 'toggle_instructor_privilege'
+    end
+  end
   root to: 'visitors#index'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin

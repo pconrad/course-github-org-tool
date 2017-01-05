@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
       return true if user and \
                      Setting.instructors and \
                      Setting.instructors.include? user.username
+                  else false
     end
 
     def anon_octokit
