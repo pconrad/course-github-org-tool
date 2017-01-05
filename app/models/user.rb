@@ -21,11 +21,16 @@ class User < ApplicationRecord
       student.username = self.username
       student.save!
 
-      machine.update_org_membership(course, {
-        role: 'member',
-        state: 'pending',
-        user: self.username
-      })
+      begin
+        # if already a member, skip (will raise exception if not a member)
+        machine.org_membership(course, { user: self.username })
+      rescue
+        machine.update_org_membership(course, {
+          role: 'member',
+          state: 'pending',
+          user: self.username
+        })
+      end
       return true
     end
     return false
