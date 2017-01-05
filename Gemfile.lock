@@ -47,6 +47,8 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -177,7 +179,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    roo (2.7.1)
+    roo (2.0.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
     rspec-core (3.5.4)
@@ -253,6 +255,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  binding_of_caller
   bootstrap-sass
   byebug
   capybara
