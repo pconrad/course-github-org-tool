@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row text-center">
+    <h1>Editing Student</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <%= render 'form', student: @student %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+
+  <div class="row text-center">
+    <%= link_to 'Show', @student %> |
+    <%= link_to 'Back', students_path %>
+  </div>
+</div>

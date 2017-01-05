@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :students
   get 'course' => 'course#show'
   get 'course/setup'
   post 'course/set_org'

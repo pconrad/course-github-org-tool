@@ -35,6 +35,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def require_instructor!
+      if !is_instructor?
+        redirect_to root_url, :alert => 'You must be an instructor to access this page.'
+      end
+    end
+
     def is_instructor?(user=nil)
       user = user || current_user
       return true if user and \
