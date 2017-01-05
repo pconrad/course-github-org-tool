@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'course/set_org'
   get 'course/show_roster'
   get 'course/edit_roster'
-  get 'course/change_roster'
+  post 'course/change_roster'
 
   resources :users do
     member do

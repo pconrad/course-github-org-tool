@@ -48,6 +48,8 @@ class CourseController < ApplicationController
   end
 
   def change_roster
+    Student.import(params[:file])
+    redirect_to course_path, notice: "Students imported."
   end
 
   private

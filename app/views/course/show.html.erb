@@ -7,6 +7,11 @@
       <!-- <p><%= @course_org.to_h %></p> -->
 
       <% if is_instructor? %>
+        <p>Upload a new roster:</p>
+        <%= form_tag course_change_roster_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Upload" %>
+        <% end %>
         <p>Here is the current course roster:</p>
         <div class="col-sm-9">
           <table class="table">

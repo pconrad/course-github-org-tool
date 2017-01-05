@@ -1,2 +1,7 @@
 <h1>Course#change_roster</h1>
 <p>Find me in app/views/course/change_roster.html.erb</p>
+<ul>
+  <% @rows.each do |row| %>
+    <li><% row.each do |r| %><%= r %>, <% end %></li>
+  <% end %>
+</ul>
