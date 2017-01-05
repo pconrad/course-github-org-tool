@@ -48,6 +48,13 @@
         </li>
       <% end %>
     </ul>
+
+
+    <p>
+      <%= button_to "Attempt Match Again",
+                    match_user_path(current_user),
+                    method: :post, class: 'btn btn-primary' %>
+    </p>
   <% end %>
 <% else %>
   <p>You are <b>NOT</b> signed in.</p>

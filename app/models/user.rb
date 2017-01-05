@@ -26,7 +26,9 @@ class User < ApplicationRecord
         state: 'pending',
         user: self.username
       })
+      return true
     end
+    return false
   end
 
 end

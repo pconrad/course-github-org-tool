@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       post 'toggle_instructor_privilege'
+      post 'match' => 'users#match_to_student'
     end
   end
   root to: 'visitors#index'

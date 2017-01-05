@@ -31,4 +31,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def match_to_student
+    @user = User.find(params[:id])
+    matched = @user.attempt_match_to_student(session_octokit, machine_octokit)
+    if matched
+      flash[:notice] = 'Successfully matched you to a student record.'
+    else
+      flash[:alert] = 'We could not match you to a student record.'
+    end
+    redirect_to root_url
+  end
+
 end
