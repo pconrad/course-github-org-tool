@@ -5,7 +5,8 @@ class User < ApplicationRecord
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-         user.name = auth['info']['name'] || ""
+        user.username = auth['info']['nickname'] || ""
+        user.name = auth['info']['name'] || ""
       end
     end
   end
