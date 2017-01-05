@@ -25,6 +25,7 @@ gem 'omniauth-github'
 gem 'pg'
 gem 'octokit', '~> 4.0'
 gem 'rails-settings-cached'
+gem 'roo'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
