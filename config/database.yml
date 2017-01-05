@@ -12,12 +12,15 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-development:
-  adapter:  postgresql
-  host:     localhost
+default: &default
+  adapter: postgresql
   encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  host:     localhost
   database: course-github-org-tool_development
-  pool:     5
   username: course-github-org-tool
   password:
   template: template0
@@ -41,21 +44,13 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter:  postgresql
+  <<: *default
   host:     localhost
-  encoding: unicode
   database: course-github-org-tool_test
-  pool:     5
   username: course-github-org-tool
   password:
   template: template0
 
 production:
-  adapter:  postgresql
-  host:     localhost
-  encoding: unicode
+  <<: *default
   database: course-github-org-tool_production
-  pool:     5
-  username: course-github-org-tool
-  password:
-  template: template0
