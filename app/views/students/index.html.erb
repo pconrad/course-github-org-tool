@@ -29,7 +29,7 @@
         <td><%= student.last_name %></td>
         <td><%= student.email %></td>
         <% if student.username %>
-          <td><%= student.username %></td>
+          <td><a href="https://github.com/<%= student.username %>"><%= student.username %></td>
           <td><%= is_org_member student.username %></td>
         <% else %>
           <td>TBA</td>
