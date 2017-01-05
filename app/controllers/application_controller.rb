@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
   helper_method :is_instructor?
+  helper_method :is_org_member
 
   private
     def current_user
@@ -40,6 +41,19 @@ class ApplicationController < ActionController::Base
                      Setting.instructors and \
                      Setting.instructors.include? user.username
                   else false
+    end
+
+    def is_org_member(user=nil)
+      user = user || current_user
+      if user and Setting.course
+        begin
+          mo = machine_octokit
+          membership = mo.org_membership(Setting.course, { user: user.username })
+          return membership.state
+        rescue
+        end
+      end
+      return nil
     end
 
     def anon_octokit
