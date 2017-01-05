@@ -2,6 +2,7 @@
 defaults: &defaults
   foo: "Foo"
   bar: 123
+  instructors: []
 
 development:
   <<: *defaults

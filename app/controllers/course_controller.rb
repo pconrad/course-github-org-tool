@@ -31,6 +31,9 @@ class CourseController < ApplicationController
     else
       add_machine_user_to_org(org_name)
       Setting.course = org_name
+      instructors = Setting.instructors || []
+      instructors << current_user.username
+      Setting.instructors = instructors
       flash[:notice] = "Successfully setup course"
 
       redirect_to course_path

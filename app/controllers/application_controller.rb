@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
+  helper_method :is_instructor?
 
   private
     def current_user
@@ -31,6 +32,13 @@ class ApplicationController < ActionController::Base
       if !current_user
         redirect_to root_url, :alert => 'You need to sign in for access to this page.'
       end
+    end
+
+    def is_instructor?(user=nil)
+      user = user || current_user
+      return true if user and \
+                     Setting.instructors and \
+                     Setting.instructors.include? user.username
     end
 
     def anon_octokit
