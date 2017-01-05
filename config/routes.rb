@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  resources :students
+  root to: 'visitors#index'
+
   get 'course' => 'course#show'
   get 'course/setup'
   post 'course/set_org'
-  get 'course/show_roster'
-  get 'course/edit_roster'
-  post 'course/change_roster'
 
+  post '/students/import'
+  resources :students
   resources :users do
     member do
       post 'toggle_instructor_privilege'
       post 'match' => 'users#match_to_student'
     end
   end
-  root to: 'visitors#index'
+  
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout

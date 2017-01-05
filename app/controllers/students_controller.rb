@@ -23,6 +23,11 @@ class StudentsController < ApplicationController
   def edit
   end
 
+  def import
+    Student.import(params[:file])
+    redirect_to students_path, notice: "Students imported."
+  end
+
   # POST /students
   # POST /students.json
   def create

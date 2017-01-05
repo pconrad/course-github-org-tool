@@ -41,17 +41,6 @@ class CourseController < ApplicationController
     end
   end
 
-  def show_roster
-  end
-
-  def edit_roster
-  end
-
-  def change_roster
-    Student.import(params[:file])
-    redirect_to course_path, notice: "Students imported."
-  end
-
   private
 
     def add_machine_user_to_org(org_name)
