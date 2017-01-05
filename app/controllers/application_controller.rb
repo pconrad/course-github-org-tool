@@ -43,12 +43,14 @@ class ApplicationController < ActionController::Base
                   else false
     end
 
-    def is_org_member(user=nil)
-      user = user || current_user
-      if user and Setting.course
+    def is_org_member(username=nil)
+      if not username and current_user
+        username = current_user.username
+      end
+      if username and Setting.course
         begin
           mo = machine_octokit
-          membership = mo.org_membership(Setting.course, { user: user.username })
+          membership = mo.org_membership(Setting.course, { user: username })
           return membership.state
         rescue
         end
