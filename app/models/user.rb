@@ -11,4 +11,22 @@ class User < ApplicationRecord
     end
   end
 
+  def attempt_match_to_student(client, machine)
+    course = Setting.course
+    return if not course
+    emails = client.emails
+    emails.each do |e|
+      student = Student.where(email: e.email).first
+      next if not student
+      student.username = self.username
+      student.save!
+
+      machine.update_org_membership(course, {
+        role: 'member',
+        state: 'pending',
+        user: self.username
+      })
+    end
+  end
+
 end
