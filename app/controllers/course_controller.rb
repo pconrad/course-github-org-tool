@@ -10,6 +10,7 @@ class CourseController < ApplicationController
     else
       @course_name = "Not Available Yet"
     end
+    @students = Student.all
   end
 
   def setup
