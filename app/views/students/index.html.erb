@@ -28,7 +28,7 @@
         <td><%= student.first_name %></td>
         <td><%= student.last_name %></td>
         <td><%= student.email %></td>
-        <% if student.username %>
+        <% if !student.username.nil? and !student.username.empty? %>
           <td><a href="https://github.com/<%= student.username %>"><%= student.username %></td>
           <td><%= is_org_member student.username %></td>
         <% else %>
